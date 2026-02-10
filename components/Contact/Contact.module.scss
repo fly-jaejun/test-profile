@@ -1,0 +1,170 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.contact {
+  @include section-padding;
+  background-color: $bg-secondary;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  @include container;
+  width: 100%;
+}
+
+.content {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity $duration-slow $ease-out, transform $duration-slow $ease-out;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.title {
+  @include heading-serif($font-size-4xl);
+  margin-bottom: $spacing-4xl;
+  text-align: center;
+
+  @include mobile {
+    font-size: $font-size-3xl;
+    margin-bottom: $spacing-3xl;
+  }
+}
+
+.contactCard {
+  max-width: 700px;
+  margin: 0 auto;
+  background-color: $bg-accent;
+  padding: $spacing-4xl $spacing-3xl;
+  border: 1px solid $border-light;
+  border-radius: 2px;
+  box-shadow: $shadow-base;
+  text-align: center;
+  position: relative;
+
+  @include mobile {
+    padding: $spacing-3xl $spacing-xl;
+  }
+}
+
+.description {
+  @include body-sans($font-size-lg);
+  margin-bottom: $spacing-3xl;
+  color: $text-secondary;
+
+  @include mobile {
+    font-size: $font-size-base;
+    margin-bottom: $spacing-2xl;
+  }
+}
+
+.emailWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-md;
+  margin-bottom: $spacing-md;
+  flex-wrap: wrap;
+}
+
+.email {
+  font-family: $font-serif;
+  font-size: $font-size-2xl;
+  color: $accent-green;
+  font-weight: 500;
+  transition: color $duration-base $ease-out;
+  border-bottom: 2px solid transparent;
+
+  &:hover {
+    color: $accent-brown;
+    border-bottom-color: $accent-brown;
+  }
+
+  @include mobile {
+    font-size: $font-size-lg;
+  }
+}
+
+.copyButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: $bg-secondary;
+  border: 1px solid $border-dark;
+  border-radius: 4px;
+  color: $text-secondary;
+  transition: all $duration-base $ease-out;
+
+  &:hover {
+    background-color: $accent-green;
+    border-color: $accent-green;
+    color: $bg-primary;
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+.copiedMessage {
+  display: block;
+  font-family: $font-sans;
+  font-size: $font-size-sm;
+  color: $accent-green;
+  font-weight: 500;
+  animation: fadeInOut 2s $ease-out;
+}
+
+.footer {
+  margin-top: $spacing-5xl;
+  padding-top: $spacing-3xl;
+  border-top: 1px solid $border-light;
+
+  @include mobile {
+    margin-top: $spacing-4xl;
+    padding-top: $spacing-2xl;
+  }
+}
+
+.footerText {
+  @include body-sans($font-size-sm);
+  color: $text-muted;
+  text-align: center;
+
+  @include mobile {
+    font-size: $font-size-xs;
+  }
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}

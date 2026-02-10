@@ -1,0 +1,99 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.about {
+  @include section-padding;
+  background-color: $bg-secondary;
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  @include container;
+}
+
+.content {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity $duration-slow $ease-out, transform $duration-slow $ease-out;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.title {
+  @include heading-serif($font-size-4xl);
+  margin-bottom: $spacing-4xl;
+  text-align: center;
+
+  @include mobile {
+    font-size: $font-size-3xl;
+    margin-bottom: $spacing-3xl;
+  }
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $spacing-3xl;
+  max-width: 1000px;
+  margin: 0 auto;
+
+  @include mobile-and-tablet {
+    grid-template-columns: 1fr;
+    gap: $spacing-2xl;
+  }
+}
+
+.card {
+  @include card($spacing-2xl);
+  position: relative;
+  transition: transform $duration-base $ease-out, box-shadow $duration-base $ease-out;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-md;
+  }
+
+  @include mobile {
+    padding: $spacing-xl;
+  }
+}
+
+.cardOffset {
+  // 비대칭 배치를 위한 오프셋
+  margin-top: $spacing-3xl;
+
+  @include mobile-and-tablet {
+    margin-top: 0;
+  }
+}
+
+.cardNumber {
+  font-family: $font-serif;
+  font-size: $font-size-sm;
+  color: $accent-brown;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  margin-bottom: $spacing-md;
+}
+
+.cardTitle {
+  @include heading-serif($font-size-2xl);
+  margin-bottom: $spacing-lg;
+
+  @include mobile {
+    font-size: $font-size-xl;
+  }
+}
+
+.cardText {
+  @include body-sans($font-size-base);
+  line-height: 1.9;
+
+  @include mobile {
+    font-size: $font-size-sm;
+  }
+}

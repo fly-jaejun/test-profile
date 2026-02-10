@@ -1,0 +1,79 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: $z-header;
+  background-color: transparent;
+  transition: background-color $duration-base $ease-out, box-shadow $duration-base $ease-out;
+
+  &.scrolled {
+    background-color: rgba(245, 241, 232, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: $shadow-sm;
+  }
+}
+
+.container {
+  @include container;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: $spacing-lg;
+  padding-bottom: $spacing-lg;
+}
+
+.logo {
+  .logoButton {
+    @include heading-serif($font-size-xl);
+    font-weight: 600;
+    transition: color $duration-base $ease-out;
+
+    &:hover {
+      color: $accent-green;
+    }
+  }
+}
+
+.nav {
+  display: flex;
+  gap: $spacing-xl;
+
+  @include mobile {
+    gap: $spacing-md;
+  }
+}
+
+.navLink {
+  @include body-sans($font-size-base);
+  font-weight: 500;
+  color: $text-secondary;
+  position: relative;
+  transition: color $duration-base $ease-out;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: $accent-green;
+    transition: width $duration-base $ease-out;
+  }
+
+  &:hover {
+    color: $accent-green;
+
+    &::after {
+      width: 100%;
+    }
+  }
+
+  @include mobile {
+    font-size: $font-size-sm;
+  }
+}

@@ -1,0 +1,110 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $bg-primary;
+
+  // 텍스처 오버레이
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.015;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+}
+
+.container {
+  @include container;
+  position: relative;
+  z-index: 1;
+}
+
+.content {
+  // 비대칭 배치
+  margin-left: 8%;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity $duration-slowest $ease-out, transform $duration-slowest $ease-out;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @include mobile {
+    margin-left: 0;
+    text-align: center;
+  }
+}
+
+.nameWrapper {
+  margin-bottom: $spacing-xl;
+}
+
+.name {
+  font-family: $font-serif-kr;
+  font-size: $font-size-7xl;
+  font-weight: 600;
+  color: $text-primary;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: $spacing-sm;
+
+  @include mobile-and-tablet {
+    font-size: $font-size-5xl;
+  }
+
+  @include mobile {
+    font-size: $font-size-4xl;
+  }
+}
+
+.nameEn {
+  font-family: $font-serif;
+  font-size: $font-size-lg;
+  color: $text-muted;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+
+  @include mobile {
+    font-size: $font-size-base;
+  }
+}
+
+.title {
+  font-family: $font-serif;
+  font-size: $font-size-3xl;
+  color: $accent-green;
+  font-weight: 500;
+  margin-bottom: $spacing-md;
+  letter-spacing: 0.02em;
+
+  @include mobile-and-tablet {
+    font-size: $font-size-2xl;
+  }
+
+  @include mobile {
+    font-size: $font-size-xl;
+  }
+}
+
+.experience {
+  font-family: $font-sans;
+  font-size: $font-size-lg;
+  color: $text-secondary;
+  font-weight: 400;
+
+  @include mobile {
+    font-size: $font-size-base;
+  }
+}
